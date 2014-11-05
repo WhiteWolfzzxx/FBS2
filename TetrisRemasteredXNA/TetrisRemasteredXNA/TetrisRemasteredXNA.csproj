@@ -110,6 +110,7 @@
     <Compile Include="BlockConFigClass.cs" />
     <Compile Include="BlockHelper.cs" />
     <Compile Include="BoardClass.cs" />
+    <Compile Include="ControlsClass.cs" />
     <Compile Include="CreditClass.cs" />
     <Compile Include="MainMenuClass.cs" />
     <Compile Include="PlayerClass.cs" />

@@ -55,13 +55,13 @@ namespace TetrisRemasteredXNA
             }
 
             //Resets the menu options
-            if (menuOption > 6)
+            if (menuOption > 5)
             {
                 menuOption = 1;
             }
             if (menuOption < 1)
             {
-                menuOption = 6;
+                menuOption = 5;
             }
         }
 
@@ -76,7 +76,7 @@ namespace TetrisRemasteredXNA
 
             if (menuOption == 1)
             {
-                spriteBatch.DrawString(smallFont, "Test", new Vector2(75, 325), Color.LightGray);
+                spriteBatch.DrawString(smallFont, "Load Game", new Vector2(75, 325), Color.LightGray);
                 spriteBatch.DrawString(bigFont, "Play", new Vector2(290, 300), Color.LightGray);
                 spriteBatch.DrawString(smallFont, "High Scores", new Vector2(540, 325), Color.LightGray);
             }
@@ -102,12 +102,6 @@ namespace TetrisRemasteredXNA
             {
                 spriteBatch.DrawString(smallFont, "Exit", new Vector2(75, 325), Color.LightGray);
                 spriteBatch.DrawString(bigFont, "Load Game", new Vector2(200, 300), Color.LightGray);
-                spriteBatch.DrawString(smallFont, "Test", new Vector2(540, 325), Color.LightGray);
-            }
-            if (menuOption == 6)
-            {
-                spriteBatch.DrawString(smallFont, "Load Game", new Vector2(75, 325), Color.LightGray);
-                spriteBatch.DrawString(bigFont, "Test", new Vector2(290, 300), Color.LightGray);
                 spriteBatch.DrawString(smallFont, "Play", new Vector2(540, 325), Color.LightGray);
             }
         }
@@ -140,11 +134,6 @@ namespace TetrisRemasteredXNA
                 case 5:
                     //Load Game
                     return 5;
-                    break;
-
-                case 6:
-                    //Windowed/Fullscreen
-                    return 6;
                     break;
 
                 default:

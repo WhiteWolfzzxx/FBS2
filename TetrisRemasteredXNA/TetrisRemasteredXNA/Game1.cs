@@ -19,7 +19,7 @@ namespace TetrisRemasteredXNA
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        enum GameStates { CreditScreen, MainMenu, Playing, GameOver, HighScoreScreen, PauseGame, Debug };
+        enum GameStates { CreditScreen, MainMenu, Playing, GameOver, HighScoreScreen, PauseGame, Debug, Controls };
         GameStates gameState = GameStates.CreditScreen;
 
         Texture2D scoreBackground;
@@ -38,13 +38,13 @@ namespace TetrisRemasteredXNA
         MainMenuClass mainMenuClass;
         ScoreClass scoreClass = new ScoreClass();
         SaveGameClass saveGameClass = new SaveGameClass();
+        ControlsClass controlsClass = new ControlsClass();
         BoardClass boardClass;
         BlockHelper blockHelper;
         CreditClass creditClass;
         KeyboardState keyState;
         bool escapeDidSomething = false;
         bool spaceDidSomething = false;
-        public bool screenState = false;
 
         public Game1()
         {
@@ -52,7 +52,7 @@ namespace TetrisRemasteredXNA
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferHeight = 600;
             graphics.PreferredBackBufferWidth = 700;
-            graphics.IsFullScreen = screenState;
+            graphics.IsFullScreen = false;
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace TetrisRemasteredXNA
                             break;
 
                         case 3:
-                            //gameState = gameState.Controls;
+                            gameState = GameStates.Controls;
                             break;
 
                         case 4:
@@ -176,19 +176,6 @@ namespace TetrisRemasteredXNA
                             }
                             MediaPlayer.Play(playBGM);
                             gameState = GameStates.Playing;
-                            break;
-
-                        case 6:
-                            if (screenState == false)
-                            {
-                                screenState = true;
-                                graphics.ToggleFullScreen();
-                            }
-                            else if (screenState == true)
-                            {
-                                screenState = false;
-                                graphics.ToggleFullScreen();
-                            }
                             break;
 
                         default:
@@ -281,6 +268,21 @@ namespace TetrisRemasteredXNA
                 }
             }
 
+            if (gameState == GameStates.Controls)
+            {
+                controlsClass.Update(gameTime);
+                if (controlsClass.getFull())
+                {
+                    graphics.ToggleFullScreen();
+                }
+
+                if (keyState.IsKeyDown(Keys.Space) && !spaceDidSomething)
+                {
+                    gameState = GameStates.MainMenu;
+                    spaceDidSomething = true;
+                }
+            }
+
             //Single Key press escape
             if (keyState.IsKeyDown(Keys.Escape) && escapeDidSomething)
             {
@@ -325,8 +327,6 @@ namespace TetrisRemasteredXNA
             if (gameState == GameStates.MainMenu)
             {
                 mainMenuClass.Draw(spriteBatch);
-                //test to see the screenState value
-                spriteBatch.DrawString(playFont, "screenState: " + screenState.ToString(), new Vector2(100, 400), Color.White);
             }
 
             if ((gameState == GameStates.Playing) ||
@@ -373,6 +373,11 @@ namespace TetrisRemasteredXNA
             if (gameState == GameStates.GameOver)
             {
 
+            }
+
+            if (gameState == GameStates.Controls)
+            {
+                controlsClass.Draw(spriteBatch, playFont);
             }
 
             if (gameState == GameStates.HighScoreScreen)
