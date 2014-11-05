@@ -76,7 +76,14 @@ namespace TetrisRemasteredXNA
 
             if (menuOption == 1)
             {
-                spriteBatch.DrawString(smallFont, "Test", new Vector2(75, 325), Color.LightGray);
+                if (Game1.screenState == false)
+                {
+                    spriteBatch.DrawString(smallFont, "Fullscreen", new Vector2(75, 325), Color.LightGray);
+                }
+                else
+                {
+                    spriteBatch.DrawString(smallFont, "Windowed", new Vector2(75, 325), Color.LightGray);
+                }
                 spriteBatch.DrawString(bigFont, "Play", new Vector2(290, 300), Color.LightGray);
                 spriteBatch.DrawString(smallFont, "High Scores", new Vector2(540, 325), Color.LightGray);
             }
@@ -102,12 +109,26 @@ namespace TetrisRemasteredXNA
             {
                 spriteBatch.DrawString(smallFont, "Exit", new Vector2(75, 325), Color.LightGray);
                 spriteBatch.DrawString(bigFont, "Load Game", new Vector2(200, 300), Color.LightGray);
-                spriteBatch.DrawString(smallFont, "Test", new Vector2(540, 325), Color.LightGray);
+                if (Game1.screenState == false)
+                {
+                    spriteBatch.DrawString(smallFont, "Fullscreen", new Vector2(540, 325), Color.LightGray);
+                }
+                else
+                {
+                    spriteBatch.DrawString(smallFont, "Windowed", new Vector2(540, 325), Color.LightGray);
+                }
             }
             if (menuOption == 6)
             {
                 spriteBatch.DrawString(smallFont, "Load Game", new Vector2(75, 325), Color.LightGray);
-                spriteBatch.DrawString(bigFont, "Test", new Vector2(290, 300), Color.LightGray);
+                if (Game1.screenState == false)
+                {
+                    spriteBatch.DrawString(bigFont, "Fullscreen", new Vector2(225, 300), Color.LightGray);
+                }
+                else
+                {
+                    spriteBatch.DrawString(bigFont, "Windowed", new Vector2(235, 300), Color.LightGray);
+                }
                 spriteBatch.DrawString(smallFont, "Play", new Vector2(540, 325), Color.LightGray);
             }
         }

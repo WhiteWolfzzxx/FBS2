@@ -44,7 +44,7 @@ namespace TetrisRemasteredXNA
         KeyboardState keyState;
         bool escapeDidSomething = false;
         bool spaceDidSomething = false;
-        public bool screenState = false;
+        public static bool screenState = false;
 
         public Game1()
         {
@@ -325,8 +325,6 @@ namespace TetrisRemasteredXNA
             if (gameState == GameStates.MainMenu)
             {
                 mainMenuClass.Draw(spriteBatch);
-                //test to see the screenState value
-                spriteBatch.DrawString(playFont, "screenState: " + screenState.ToString(), new Vector2(100, 400), Color.White);
             }
 
             if ((gameState == GameStates.Playing) ||
