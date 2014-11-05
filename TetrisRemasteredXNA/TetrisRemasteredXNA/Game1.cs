@@ -52,6 +52,7 @@ namespace TetrisRemasteredXNA
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferHeight = 600;
             graphics.PreferredBackBufferWidth = 700;
+            graphics.IsFullScreen = screenState;
         }
 
         /// <summary>
@@ -181,12 +182,12 @@ namespace TetrisRemasteredXNA
                             if (screenState == false)
                             {
                                 screenState = true;
-                                graphics.IsFullScreen = screenState;
+                                graphics.ToggleFullScreen();
                             }
                             else if (screenState == true)
                             {
                                 screenState = false;
-                                graphics.IsFullScreen = screenState;
+                                graphics.ToggleFullScreen();
                             }
                             break;
 
@@ -312,7 +313,6 @@ namespace TetrisRemasteredXNA
         {
             graphics.GraphicsDevice.Clear(Color.Black);
 
-
             //TODO: Add your drawing code here
 
             spriteBatch.Begin();
@@ -325,6 +325,8 @@ namespace TetrisRemasteredXNA
             if (gameState == GameStates.MainMenu)
             {
                 mainMenuClass.Draw(spriteBatch);
+                //test to see the screenState value
+                spriteBatch.DrawString(playFont, "screenState: " + screenState.ToString(), new Vector2(100, 400), Color.White);
             }
 
             if ((gameState == GameStates.Playing) ||
