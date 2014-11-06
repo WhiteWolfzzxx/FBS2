@@ -84,17 +84,17 @@ namespace TetrisRemasteredXNA
             {
                 spriteBatch.DrawString(smallFont, "Play", new Vector2(75, 325), Color.LightGray);
                 spriteBatch.DrawString(bigFont, "High Scores", new Vector2(200, 300), Color.LightGray);
-                spriteBatch.DrawString(smallFont, "Controls", new Vector2(540, 325), Color.LightGray);
+                spriteBatch.DrawString(smallFont, "Settings", new Vector2(540, 325), Color.LightGray);
             }
             if (menuOption == 3)
             {
                 spriteBatch.DrawString(smallFont, "High Scores", new Vector2(75, 325), Color.LightGray);
-                spriteBatch.DrawString(bigFont, "Controls", new Vector2(240, 300), Color.LightGray);
+                spriteBatch.DrawString(bigFont, "Settings", new Vector2(240, 300), Color.LightGray);
                 spriteBatch.DrawString(smallFont, "Exit", new Vector2(540, 325), Color.LightGray);
             }
             if (menuOption == 4)
             {
-                spriteBatch.DrawString(smallFont, "Controls", new Vector2(75, 325), Color.LightGray);
+                spriteBatch.DrawString(smallFont, "Settings", new Vector2(75, 325), Color.LightGray);
                 spriteBatch.DrawString(bigFont, "Exit", new Vector2(290, 300), Color.LightGray);
                 spriteBatch.DrawString(smallFont, "Load Game", new Vector2(540, 325), Color.LightGray);
             }
