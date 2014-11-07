@@ -108,6 +108,9 @@ namespace TetrisRemasteredXNA
 
             //CreditClass
             creditClass = new CreditClass(testFont, playFont);
+
+            //ControlsClass
+            controlsClass.Load(Content);
             #endregion
         }
 
